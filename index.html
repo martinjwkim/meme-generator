@@ -1,1 +1,54 @@
-<h1>Hello World!</h1>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Meme Generator by Martin Kim</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+        <h1 id="title">
+            MEME GENERATOR
+        </h1>
+        <p id="instructions">
+            Fill out the form to create your own memes!
+        </p>
+        <p>
+            <form name="imageForm">
+            <div class="row">
+                <div class="col-25">
+                    <label for="image-upload">Image URL</label>
+                </div>
+                <div class="col-75">
+                    <textarea id="image-upload" rows="1" placeholder="Please enter the URL for your meme image?"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="top-text">Text on Top</label>
+                </div>
+                <div class="col-75">
+                        <textarea id="top-text" rows="1" placeholder="(Optional) What text do you want at the the top of your meme?"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="bottom-text">Text on Bottom</label>
+                </div>
+                <div class="col-75">
+                        <textarea id="bottom-text" rows="1" placeholder="(Optional) What text do you want at the bottom of your meme?"></textarea>
+                </div>
+            </div>            
+            <br>
+            <input type="button" id="create-btn" value="Create my masterpiece!">
+            <input type="button" id="reset-btn" value="Reset Form" onclick="javascript:eraseText();">
+        </form>
+        </p>
+        </div>
+        <p>
+            <canvas id="meme-canvas"></canvas>
+        </p>
+        <script src="meme-generator.js"></script>
+    
+    </body>
+</html>
