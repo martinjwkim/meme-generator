@@ -12,6 +12,7 @@
         </h1>
         <p id="instructions">
             Fill out the form to create your own memes!
+            <br>Click on your meme to delete it from the page!
         </p>
         <p>
             <form name="imageForm">
@@ -41,12 +42,11 @@
             </div>            
             <br>
             <input type="button" id="create-btn" value="Create my masterpiece!">
-            <input type="button" id="reset-btn" value="Reset Form" onclick="javascript:eraseText();">
         </form>
         </p>
         </div>
         <p>
-            <canvas id="meme-canvas"></canvas>
+            <div id="meme-canvas-container"></div>
         </p>
         <script src="meme-generator.js"></script>
     

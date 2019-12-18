@@ -1,8 +1,11 @@
 let topText, bottomText, topTextSize, bottomTextSize, image, createBtn, canvas, ctx;
 
-function generateMeme (img, topText, bottomText){
-    // img.width='500px'
-    // img.height='auto'
+function generateMeme (img, topTextSize, bottomTextSize){
+
+    canvas=document.createElement("canvas");
+    ctx=canvas.getContext("2d");
+
+    canvas.id="meme-canvas"
 
     canvas.width=500;
     canvas.height=500*img.height/img.width;
@@ -18,36 +21,34 @@ function generateMeme (img, topText, bottomText){
     ctx.textAlign='center';
 
     ctx.textBaseline='top';
-    ctx.fillText(topText,canvas.width/2,0,canvas.width);
-    ctx.strokeText(topText,canvas.width/2,0,canvas.width);
+    ctx.fillText(topTextSize,canvas.width/2,0,canvas.width);
+    ctx.strokeText(topTextSize,canvas.width/2,0,canvas.width);
 
     ctx.textBaseline='bottom';
-    ctx.fillText(bottomText,canvas.width/2,canvas.height,canvas.width);
-    ctx.strokeText(bottomText,canvas.width/2,canvas.height,canvas.width);
-}
+    ctx.fillText(bottomTextSize,canvas.width/2,canvas.height,canvas.width);
+    ctx.strokeText(bottomTextSize,canvas.width/2,canvas.height,canvas.width);
 
-function eraseText() {
+    document.getElementById("meme-canvas-container").appendChild(canvas);
+
+    canvas.addEventListener("click",(event)=>[
+        canvas.parentNode.removeChild(document.getElementById("meme-canvas"))
+    ])
+
     document.getElementById("image-upload").value = "";
     document.getElementById("top-text").value = "";
     document.getElementById("bottom-text").value = "";
 }
 
-
-
-
 function init(){
+
     topText=document.getElementById('top-text')
     bottomText=document.getElementById('bottom-text')
-    topTextSize=document.getElementById('top-text-size')
-    bottomTextSize=document.getElementById('bottom-text-size')
     image=document.getElementById('image-upload')
     createBtn=document.getElementById('create-btn')
-    canvas=document.getElementById('meme-canvas')
     imageForm=document.getElementById('imageForm')
 
-    ctx=canvas.getContext("2d")
 
-    createBtn.addEventListener("click",function(event){
+    createBtn.addEventListener("click",(event)=>{
         let img=new Image();
         img.onload=function(){
             generateMeme(img,topText.value,bottomText.value);
@@ -55,6 +56,7 @@ function init(){
         img.src=image.value;
         event.preventDefault();
     })
+
 }
 
 init();
